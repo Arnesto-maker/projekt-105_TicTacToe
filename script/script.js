@@ -69,5 +69,3 @@ function restartGame() {
     document.getElementById('game-status').innerHTML = ''; // Leere den Status-Container
     render();
 }
-
-

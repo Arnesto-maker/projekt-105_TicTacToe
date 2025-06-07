@@ -42,4 +42,4 @@ function addColClasses(colClasses, i) {
     if (i < 6) colClasses.push('bottom');
     if (i % 3 === 0 || i % 3 === 1) colClasses.push('right');
     if ([0, 3, 6].includes(i)) colClasses.push('columnHeight');
-}
+} 
