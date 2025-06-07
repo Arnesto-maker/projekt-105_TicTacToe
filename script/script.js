@@ -1,12 +1,9 @@
-function init() {
-    render();
-}
-
 /**
  * Initialisiert das Spiel, indem das Spielfeld zum ersten Mal gerendert wird.
  */
 function init() {
     render();
+    restartGame();
 }
 
 /**
@@ -14,22 +11,13 @@ function init() {
  * @param {number} i - Der Index der angeklickten Zelle (0-8).
  */
 function handleCellClick(i) {
-    // Verhindere Klicks, wenn das Spiel vorbei ist oder die Zelle bereits belegt ist.
     if (gameOver || fields[i] !== null) {
         return;
-    }
-
-    // 1. Setze das Symbol des aktuellen Spielers in das Array.
-    fields[i] = currentPlayerSymbol;
-
-    // 2. Wechsle den Spieler für den nächsten Zug.
-    currentPlayerSymbol = (currentPlayerSymbol === 'cross') ? 'circle' : 'cross';
-
-    // 3. Rendere das Spielfeld neu, um das neue Symbol und die Spieleranzeige zu zeigen.
-    render();
-    
-    // 4. Prüfe, ob es einen Gewinner oder ein Unentschieden gibt.
-    checkWinner();
+    } // Verhindere Klicks, wenn das Spiel vorbei ist oder die Zelle bereits belegt ist.
+    fields[i] = currentPlayerSymbol;  // 1. Setze das Symbol des aktuellen Spielers in das Array.
+    currentPlayerSymbol = (currentPlayerSymbol === 'cross') ? 'circle' : 'cross'; // 2. Wechsle den Spieler für den nächsten Zug.
+    render(); // 3. Rendere das Spielfeld neu, um das neue Symbol und die Spieleranzeige zu zeigen.
+    checkWinner();// 4. Prüfe, ob es einen Gewinner oder ein Unentschieden gibt.
 }
 
 /**
@@ -41,7 +29,6 @@ function checkWinner() {
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertikal
         [0, 4, 8], [2, 4, 6]             // Diagonal
     ];
-
     for (const combination of winningCombinations) {
         const [a, b, c] = combination;
         if (fields[a] && fields[a] === fields[b] && fields[a] === fields[c]) {
@@ -51,11 +38,9 @@ function checkWinner() {
             return;
         }
     }
-    
-    // Prüfe auf Unentschieden (wenn alle Felder voll sind und es keinen Gewinner gibt)
     if (!fields.includes(null)) {
         gameOver = true;
-        showEndScreen(null); // 'null' signalisiert ein Unentschieden
+        showEndScreen(null); // Prüfe auf Unentschieden (wenn alle Felder voll sind und es keinen Gewinner gibt) // 'null' signalisiert ein Unentschieden
     }
 }
 
@@ -66,34 +51,22 @@ function checkWinner() {
 function showEndScreen(winner) {
     const statusDiv = document.getElementById('game-status');
     let message = '';
-    
     if (winner) {
         message = `Spieler ${winner === 'cross' ? generateCrossSVG() : generateCircleSVG()} hat gewonnen!`;
     } else {
         message = `Unentschieden!`;
     }
-
-    statusDiv.innerHTML = `
-        <h2>${message}</h2>
-        <button onclick="restartGame()" class="restart-btn">Neustart</button>
-    `;
-
-    // Verstecke die Spieler-am-Zug-Anzeige
-    document.getElementById('player-turn-display').style.display = 'none';
+    statusDivTemplate(statusDiv,message);
+    document.getElementById('player-turn-display').classList.add('displayNone'); // Verstecke die Spieler-am-Zug-Anzeige
 }
 
-/**
- * Setzt alle Spielvariablen zurück und startet das Spiel neu.
- */
+// Setzt alle Spielvariablen zurück und startet das Spiel neu.
 function restartGame() {
     fields = [null, null, null, null, null, null, null, null, null];
-    currentPlayerSymbol = 'cross';
+    currentPlayerSymbol = Math.random() < 0.5 ? 'cross' : 'circle';
     gameOver = false;
-    
-    // Zeige die Spieler-am-Zug-Anzeige wieder an
-    document.getElementById('player-turn-display').style.display = 'flex';
+    document.getElementById('player-turn-display').classList.remove('displayNone'); // Zeige die Spieler-am-Zug-Anzeige wieder an
     document.getElementById('game-status').innerHTML = ''; // Leere den Status-Container
-    
     render();
 }
 

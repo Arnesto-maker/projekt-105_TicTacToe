@@ -27,3 +27,10 @@ function generateCrossSVG() {
     `;
     return svgCode.trim();
 }
+
+function statusDivTemplate(statusDiv,message) {
+    statusDiv.innerHTML = `
+        <h2>${message}</h2>
+        <button onclick="restartGame()" class="restart-btn">Neustart</button>
+    `;
+}

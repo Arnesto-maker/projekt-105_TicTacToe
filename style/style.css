@@ -65,3 +65,9 @@
 .restart-btn:hover {
     background-color: #008fbf;
 }
+.displayNone {
+    display: none;
+}
+.displayFlex {
+    display: flex;
+}
