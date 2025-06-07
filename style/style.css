@@ -26,6 +26,42 @@
     align-items: center;
     justify-content: center;
 }
+.col:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
 .width720 {
     max-width: 640px;
+}
+.player-turn-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 80px; /* Höhe für die SVG-Icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Abstand zwischen Text und Icon */
+    font-size: 24px;
+}
+
+#game-status {
+    margin-top: 25px;
+    font-size: 32px;
+    color: #00B0EF; /* Helle Farbe für den Status */
+    height: 80px;
+}
+
+.restart-btn {
+    font-size: 20px;
+    padding: 10px 25px;
+    background-color: #00B0EF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.restart-btn:hover {
+    background-color: #008fbf;
 }

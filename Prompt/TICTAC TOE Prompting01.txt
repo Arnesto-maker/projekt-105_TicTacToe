@@ -1,0 +1,94 @@
+generiere eine render () Funktion mit Folgendem Stand des Projekts : 
+
+Html Datei :
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC-TAC-TOE</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
+<body class="p-3 mb-2 bg-black text-white">
+    <div class="container p-3 mb-2 bg-black text-white textAlignCenter">
+        <h1 class="h1Size">TIC-TAC-TOE</h1>
+        <div class="container text-center width720">
+        <div class="row row-cols-3">
+            <div class="col bottom right columnHeight " id="0"></div>
+            <div class="col bottom" id="1"></div>
+            <div class="col bottom left" id="2"></div>
+            <div class="col bottom right columnHeight" id="3"></div>
+            <div class="col bottom" id="4"></div>
+            <div class="col bottom left " id="5"></div>
+            <div class="col right columnHeight" id="6"></div>
+            <div class="col" id="7"></div>
+            <div class="col left" id="8"></div>
+        </div>
+    </div>
+
+
+    
+</body>
+<script src="script/script.js"></script>
+<script src="script/database.js"></script>
+</html>
+
+
+CSS Datei: 
+
+.textAlignCenter {
+    text-align: center;
+}
+.h1Size {
+    font-size: 72px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.bottom {
+    border-bottom: 5px solid white;
+}
+.top {
+    border-top: 5px solid white;
+}
+.right {
+    border-right: 5px solid white;
+}
+.left {
+    border-left: 5px solid white;
+}
+.columnHeight {
+    height: 120px;
+}
+.col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.width720 {
+    max-width: 640px;
+}
+
+und Javascript Datei 1 (database.js) :
+
+let fields = [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+];
+
+und Javascript Datei 2 (script.js) ist noch nicht geschrieben.
+
+generiere die Funktion render () mit folgender Eigenschaft :
+
+1. wenn in Array fields, index i ein Wort 'circle' stehen, soll ein DIV-Container mit id i ein Circle gerendert werden,
+	Diese Funktion soll in script.js geschrieben werden
+
